@@ -1,5 +1,5 @@
 def extract_patches(images):
-  # images mean X,Y
+  # images refer to images and labels
   ksize_rows = 64
   ksize_cols = 64
 
@@ -20,38 +20,18 @@ def extract_patches(images):
 
   sess = tf.compat.v1.Session()
       
-      
-  image_patches = tf.image.extract_patches(X, ksizes, strides, rates, padding)
+
+  image_patches = tf.image.extract_patches(images, ksizes, strides, rates, padding)
   print(image_patches.shape)
-
-
-  label_patches = tf.image.extract_patches(Y, ksizes, strides, rates, padding)
-  print(label_patches.shape)
-
-
-  image_patches_val= tf.image.extract_patches(X_val, ksizes, strides, rates, padding)
-  label_patches_val= tf.image.extract_patches(Y_val, ksizes, strides, rates, padding)
-  print(image_patches_val.shape , label_patches_val.shape)
-
 
 
   num_patches = image_patches.shape[1]*image_patches.shape[2]
   h_patch = ksize_rows
 
-  print(num_patches , h_patch)
-
   I = tf.reshape(image_patches , (len(X)*num_patches,h_patch,h_patch,3))
-  L = tf.reshape(label_patches , (len(X)*num_patches,h_patch,h_patch,1))
+  total_image_patches = tf.reshape(I ,(len(images)*num_patches,h_patch,h_patch,3))
 
 
-  total_image_patches_train = tf.reshape(I ,(len(X)*num_patches,h_patch,h_patch,3))
-  total_label_patches_train = tf.reshape(L ,(len(X)*num_patches,h_patch,h_patch,1))
+  return total_image_patches
 
-
-  total_image_patches_val = tf.reshape(image_patches_val ,(len(X_val)*num_patches,h_patch,h_patch,3))
-  total_label_patches_val = tf.reshape(label_patches_val ,(len(Y_val)*num_patches,h_patch,h_patch,1))
-
-  print(total_image_patches_train.shape , total_label_patches_train.shape)
-  print(total_image_patches_val.shape , total_label_patches_val.shape)
-
-  return total_image_patches_train , total_label_patches_train , total_image_patches_val,total_label_patches_val
+# so we shall do the same for ground-truth
