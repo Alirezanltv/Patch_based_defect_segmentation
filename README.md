@@ -26,5 +26,5 @@ Patch based approach is one the approacehs which you can do data augmentation fo
 
 <p>
   
-   <img width="1200" src="https://github.com/Alirezanltv/Patch_based_defect_segmentation/blob/main/results/different_kernel_2.PNG"></a>
+   <img width="1200" src="https://github.com/Alirezanltv/Patch_based_defect_segmentation/blob/main/results/different_kernel_2.jpg"></a>
 </p>
