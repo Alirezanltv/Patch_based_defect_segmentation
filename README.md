@@ -121,10 +121,10 @@ pip install -r requirements.txt
 3. Train the models:
 ```bash
 # Stage 1: Binary Classification
-python inception40_vgg16_classifier.py --data_dir path/to/dataset
+python Classification_part1.py --data_dir path/to/dataset
 
 # Stage 2: Defect Type Classification
-python dense27_vgg16_classifier.py --data_dir path/to/defect_types
+python Classification_part2.py --data_dir path/to/defect_types
 
 # Stage 3: Segmentation
 python ud52_deepcnn_segmentation.py --data_dir path/to/segmentation_data
