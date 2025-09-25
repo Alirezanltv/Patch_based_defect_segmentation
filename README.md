@@ -127,13 +127,10 @@ python Classification_part1.py --data_dir path/to/dataset
 python Classification_part2.py --data_dir path/to/defect_types
 
 # Stage 3: Segmentation
-python ud52_deepcnn_segmentation.py --data_dir path/to/segmentation_data
+python train.py --data_dir path/to/segmentation_data
 ```
 
-4. Inference on new images:
-```bash
-python predict.py --input path/to/image.jpg
-```
+
 
 ## Citation
 
